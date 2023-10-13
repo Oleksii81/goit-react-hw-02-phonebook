@@ -25,8 +25,7 @@ export class App extends Component {
     if (
       this.state.contacts.some(
         contact =>
-        contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.number.toLowerCase() === number.toLowerCase()
+        contact.name.toLowerCase() === name.toLowerCase() 
         )
         ) {
           alert(`${name} or entered number is already in contacts.`);
@@ -45,18 +44,14 @@ export class App extends Component {
   };
   
   
-  filterByString(field, filterValue) {
-    return field.toLowerCase().trim().includes(filterValue.toLowerCase().trim()
-    );
-  };
-  
-  
   filteredContacts = () => {
+    const filterValue = this.state.filter.toLowerCase().trim();
+  
     return this.state.contacts.filter(contact =>
-      this.filterByString(contact.name, this.state.filter) ||
-      this.filterByString(contact.name, this.state.filter)
+      contact.name.toLowerCase().trim().includes(filterValue)
     );
   };
+  
     
     
   onFilterChange = ({ target: { value } }) => {
